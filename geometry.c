@@ -67,7 +67,7 @@ int main() {
   else if (Arg(str))
     printf("Неправильно введены координаты объекта\n");
   else if (End(str))
-    printf("Неправильный завершающий символ\n", strlen(str) - 1);
+    printf("Неправильный завершающий символ\n");
   else
     printf("%s\n", str);
   fclose(file);
