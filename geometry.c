@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 int Figur(char *str) {
   int flag = 1;
   char data[100];
   for (int i = 0; i < strlen(str); i++) {
     if (str[i] != '(')
-      data[i] = str[i];
+      data[i] = tolower(str[i]);
     else
       break;
   }
@@ -24,9 +25,8 @@ int Arg(char *str) {
       break;
     }
   }
-  for (int i = data + 1; i < strlen(str) - 1; i++) {
-    if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.' || str[i] == ',' ||
-        str[i] == ' ')
+  for (int i = data + 1; i < strlen(str) - 2; i++) {
+    if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.' || str[i] == ',' || str[i] == ' ')
       flag = 0;
     else {
       flag = 1;
@@ -36,8 +36,6 @@ int Arg(char *str) {
   for (int i = data + 1; i < strlen(str) - 1; i++) {
     if (str[i] == '.' && (str[i + 1] < 48 && str[i + 1] > 57) && (str[i - 1] < 48 && str[i - 1] > 57))
       flag = 1;
-    else if(str[i]==' ' && (str[i+1]<48 && str[i+1]>57) && ((str[i-1]<48 && str[i-1]>57)||str[i-1]!=','))
-      flag = 1;
     else if(str[i]==',' && (str[i+1]!=' ') && (str[i-1]<48 && str[i-1]>57))
       flag = 1;
   }
@@ -46,7 +44,7 @@ int Arg(char *str) {
 int End(char *str) {
   int flag = 1;
   int bracket = 0;
-  long int ending = strlen(str) - 1;
+  long int ending = strlen(str) - 2;
   for (int i = 0; i < strlen(str); i++) {
     if (str[i] == ')') {
       bracket = i;
