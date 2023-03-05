@@ -53,8 +53,8 @@ int Arg(char* str)
         }
     }
     for (int i = data + 1; i < strlen(str) - 1; i++) {
-        if (str[i] == '.' && (str[i + 1] < 48 && str[i + 1] > 57)
-            && (str[i - 1] < 48 && str[i - 1] > 57))
+        if (str[i] == '.' && ((str[i + 1] < 48 || str[i + 1] > 57)
+            || (str[i - 1] < 48 || str[i - 1] > 57)))
             flag = 1;
         else if (
                 str[i] == ',' && (str[i + 1] != ' ')
