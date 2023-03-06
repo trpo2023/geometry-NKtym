@@ -83,6 +83,47 @@ int num(char* str){
 	    flag=1;
 	else
 	    flag=0;
+	if(str[i]==','){
+	    if(cnt!=2){
+		flag=1;
+		break;
+	    }
+	    else
+		cnt=0;
+	}
+	if(str[i+1]==')'){
+	    if(cnt!=1){
+		flag=1;
+		break;
+	    }
+	}
+    }
+    return flag;
+}
+
+int flout(char* str){
+    int flag=1;
+    int data;
+    for (int i = 0; i < strlen(str); i++) {
+        if (str[i] == '(') {
+            data = i;
+            break;
+        }
+    }
+    int cnt=0;
+    for (int i = data + 1; i < strlen(str) - 2; i++) {
+	if(str[i]>=48 && str[i]<=57){
+	    for(int j=i;str[j]!=' ' && str[j]!=')' && str[j]!=',';j++){
+		if(str[j]=='.')
+		    cnt++;
+	    }
+	}
+	if(cnt>2){
+	    flag=1;
+	    return flag;
+	}
+	else
+	    flag=0;
     }
     return flag;
 }
@@ -137,7 +178,9 @@ int main()
     } else if (Arg(str))
         printf("Неправильно введены координаты в %d строке\n", cnt);
     else if(num(str))
-	printf("Слишком много переданных аргументов в %d строке \n",cnt);
+	printf("Неправильная передача аргументов в %d строке \n",cnt);
+    else if(flout(str))
+	printf("Неправильная запись дробного аргумента в %d строке \n",cnt);
     else if (Simval(str))
         printf("Неправильная постановка запятой в %d строке\n", cnt);
     else if (End(str))
@@ -154,7 +197,9 @@ int main()
             } else if (Arg(str))
                 printf("Неправильно введены координаты во %d строке\n", cnt);
             else if(num(str))
-	        printf("Слишком много переданных аргументов во %d строке \n",cnt);
+	        printf("Неправильная передача аргументов во %d строке \n",cnt);
+    	    else if(flout(str))
+		printf("Неправильная запись дробного аргумента во %d строке \n",cnt);
 	    else if (Simval(str))
                 printf("Неправильная постановка запятой во %d строке\n", cnt);
             else if (End(str))
