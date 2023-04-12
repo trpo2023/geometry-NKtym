@@ -6,13 +6,14 @@
 
 int main()
 {
-    FILE* file;
-    file = fopen("geom.txt", "r");
-    if (fileerror(file))
+    FILE* file = fopen("geom.txt", "r");
+    if (file==NULL){
         printf("Ошибка открытия файла");
+	return -1;
+    }
     char str[40];
     int cnt = 1;
-    fgets(str,20, file);
+    fgets(str,40, file);
     if (figure(str)) {
         printf("Неправильное название фигуры в %d строке %s\n", cnt, str);
         if (first(str))
