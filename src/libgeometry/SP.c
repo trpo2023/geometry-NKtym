@@ -26,4 +26,3 @@ int perimeter(double r)
     int p = 2 * pi * r;
     return p;
 }
-

@@ -81,7 +81,7 @@ int arg(char* str)
 int num(char* str)
 {
     int flag = 1;
-    int data=0;
+    int data = 0;
     for (long unsigned int i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
@@ -118,7 +118,7 @@ int num(char* str)
 int flout(char* str)
 {
     int flag = 1;
-    int data=0;
+    int data = 0;
     for (long unsigned int i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
@@ -146,7 +146,7 @@ int flout(char* str)
 int sumbol(char* str)
 {
     int flag = 1;
-    int data=0;
+    int data = 0;
     for (long unsigned int i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;

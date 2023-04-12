@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-typedef struct circle
-{
+typedef struct circle{
     double x;
     double y;
     double r;

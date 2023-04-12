@@ -1,6 +1,5 @@
-#include <stdlib.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 
 int fileerror(FILE* file);
 int figure(char* str);
