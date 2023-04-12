@@ -1,5 +1,6 @@
 APP_NAME = geometry
 LIB_NAME = libgeometry
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I src -MP -MMD -O0 -g
