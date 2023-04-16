@@ -4,6 +4,22 @@
 #include <string.h>
 #define pi 3.14
 
+double coordinatesx(char* str)
+{
+	char* strdata;
+	str += 7;
+	return strtod(str, &strdata);
+}
+
+double coordinatesy(char* str)
+{
+	char* strdata;
+	str += 7;
+	strtod(str, &strdata);
+	str = strdata + 1;
+	return strtod(str, &strdata);
+}
+
 double radius(char* str)
 {
     char* strdata;
