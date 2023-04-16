@@ -81,10 +81,15 @@ int main()
             i = 0;
         }
     }
+    long unsigned int n=sizeof(figur)/sizeof(figur[0]);
     printf("\nTest\n");
-    for(long unsigned int i=0;i<(sizeof(figur)/sizeof(figur[0]));i++){
+    for(long unsigned int i=0;i<n;i++){
 	printf("%.1lf %.1lf %.1lf \n",figur[i]->x,figur[i]->y,figur[i]->r);
     }
+    if(intersection(figur,n))
+	printf("Фигуры пересекаются\n");
+    else
+	printf("Фигуры не пересекаются\n");
     fclose(file);
     return 0;
 }
