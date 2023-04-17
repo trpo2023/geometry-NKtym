@@ -7,42 +7,42 @@
 
 #include <ctest.h>
 
-CTEST(TEST_coordinatesx,simple_normalx)
+CTEST(TEST_coordinatesx, simple_normalx)
 {
     char* good = "circle(0.0 0.0, 10.0)";
     double resultgood = coordinatesx(good);
     ASSERT_DBL_NEAR(0.0, resultgood);
 }
 
-CTEST(TEST_coordinatesy,simple_normaly)
+CTEST(TEST_coordinatesy, simple_normaly)
 {
     char* good = "circle(0.0 0.0, 10.0)";
     double resultgood = coordinatesy(good);
     ASSERT_DBL_NEAR(0.0, resultgood);
 }
 
-CTEST(TEST_radius,simple_normalradius)
+CTEST(TEST_radius, simple_normalradius)
 {
     char* good = "circle(0.0 0.0, 10.0)";
     double resultgood = radius(good);
     ASSERT_DBL_NEAR(10.0, resultgood);
 }
 
-CTEST(TEST_area,simple_correspondencearea)
+CTEST(TEST_area, simple_correspondencearea)
 {
     double good = 10;
     int resultgood = area(good);
     ASSERT_EQUAL(314, resultgood);
 }
 
-CTEST(TEST_perimeter,simple_correspondenceperimeter)
+CTEST(TEST_perimeter, simple_correspondenceperimeter)
 {
     double good = 10;
     int resultgood = perimeter(good);
     ASSERT_EQUAL(62, resultgood);
 }
 
-CTEST(TEST_intersection,simple_correspondenceintersection)
+CTEST(TEST_intersection, simple_correspondenceintersection)
 {
     circle* figur[3];
     circle* circle1 = (circle*)malloc(sizeof(circle1));
@@ -59,9 +59,9 @@ CTEST(TEST_intersection,simple_correspondenceintersection)
     circle3->y = 10;
     figur[0] = circle1;
     figur[1] = circle2;
-    int resultgood=intersection(figur,2);
+    int resultgood = intersection(figur, 2);
     figur[2] = circle3;
-    int resultbad=intersection(figur,3);
+    int resultbad = intersection(figur, 3);
     ASSERT_EQUAL(1, resultgood);
     ASSERT_EQUAL(0, resultbad);
 }

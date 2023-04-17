@@ -7,7 +7,7 @@
 
 #include <ctest.h>
 
-CTEST(TEST_figure,simple_circle)
+CTEST(TEST_figure, simple_circle)
 {
     char* bad = "cirgle(0 0, 10)";
     char* good = "circle(0 0, 10)";
@@ -17,7 +17,7 @@ CTEST(TEST_figure,simple_circle)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_first,simple_firstelement)
+CTEST(TEST_first, simple_firstelement)
 {
     char* bad = "CirCle 0 0, 10 1";
     char* good = "CirCle(0 0, 10)";
@@ -27,7 +27,7 @@ CTEST(TEST_first,simple_firstelement)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_arg,simple_normalarg)
+CTEST(TEST_arg, simple_normalarg)
 {
     char* bad = "CirCle(g 0, 10)";
     char* good = "CirCle(0 0, 10)";
@@ -37,7 +37,7 @@ CTEST(TEST_arg,simple_normalarg)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_flout,simple_normalfloutnum)
+CTEST(TEST_flout, simple_normalfloutnum)
 {
     char* bad = "CirCle(0 0, 10.0.1)";
     char* good = "CirCle(0 0, 10)";
@@ -47,7 +47,7 @@ CTEST(TEST_flout,simple_normalfloutnum)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_num,simple_cntnum)
+CTEST(TEST_num, simple_cntnum)
 {
     char* bad = "CirCle(0 0 1, 10 )";
     char* good = "CirCle(0 0, 10)";
@@ -57,7 +57,7 @@ CTEST(TEST_num,simple_cntnum)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_sumbol,simple_delimiter)
+CTEST(TEST_sumbol, simple_delimiter)
 {
     char* bad = "CirCle(0 0 10)";
     char* good = "CirCle(0 0, 10)";
@@ -67,7 +67,7 @@ CTEST(TEST_sumbol,simple_delimiter)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_end,simple_endelement)
+CTEST(TEST_end, simple_endelement)
 {
     char* bad = "CirCle(0 0, 10 1";
     char* good = "CirCle(0 0, 10)";
