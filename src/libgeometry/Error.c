@@ -6,13 +6,6 @@
 #define ZEROASCII 48
 #define NINEASCII 57
 
-int fileerror(FILE* file)
-{
-    if (file)
-        return 0;
-    else
-        return 1;
-}
 
 int figure(char* str)
 {
