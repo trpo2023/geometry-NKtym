@@ -4,7 +4,7 @@ TEST_NAME = geometry_test
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I src -I thirdparty -MP -MMD
+CPPFLAGS = -I src -I thirdparty -MP -MMD -O0 -g
 LDLIBS = -lm
 
 BIN_DIR = bin
