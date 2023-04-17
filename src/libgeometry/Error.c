@@ -6,13 +6,6 @@
 #define ZEROASCII 48
 #define NINEASCII 57
 
-int fileerror(FILE* file)
-{
-    if (file)
-        return 0;
-    else
-        return 1;
-}
 
 int figure(char* str)
 {
@@ -21,7 +14,7 @@ int figure(char* str)
     for (long unsigned int i = 0; i < strlen(str); i++) {
         if (str[i] != '(') {
             data[i] = tolower(str[i]);
-            str[i] = tolower(str[i]);
+            //str[i] = data[i];
         } else
             break;
     }
