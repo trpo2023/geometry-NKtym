@@ -1,7 +1,9 @@
-#include <libgeometry/SP.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include <libgeometry/SP.h>
+
 #define pi 3.14
 
 double coordinatesx(char* str)

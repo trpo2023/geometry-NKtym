@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#pragma once
 
 int fileerror(FILE* file);
 int figure(char* str);

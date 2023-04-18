@@ -1,4 +1,4 @@
-#include <stdio.h>
+#pragma once
 
 typedef struct circle {
     double x;

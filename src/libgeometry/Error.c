@@ -1,7 +1,8 @@
 #include <ctype.h>
-#include <libgeometry/Error.h>
 #include <stdio.h>
 #include <string.h>
+
+#include <libgeometry/Error.h>
 
 #define ZEROASCII 48
 #define NINEASCII 57
@@ -13,7 +14,6 @@ int figure(char* str)
     for (long unsigned int i = 0; i < strlen(str); i++) {
         if (str[i] != '(') {
             data[i] = tolower(str[i]);
-            str[i] = data[i];
         } else
             break;
     }

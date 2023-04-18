@@ -1,8 +1,10 @@
 #include <ctype.h>
-#include <libgeometry/Error.h>
-#include <libgeometry/SP.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+#include <libgeometry/Error.h>
+#include <libgeometry/SP.h>
 
 int main()
 {
