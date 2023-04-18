@@ -5,6 +5,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I src -I thirdparty -MP -MMD
+LDLIBS = -lm
 
 BIN_DIR = bin
 OBJ_DIR = obj

@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include <libgeometry/SP.h>
 
-#define pi 3.14
+#define _USE_MATH_DEFINES
 
 double coordinatesx(char* str)
 {
@@ -35,13 +36,13 @@ double radius(char* str)
 
 int area(double r)
 {
-    int s = pi * r * r;
+    int s = M_PI * r * r;
     return s;
 }
 
 int perimeter(double r)
 {
-    int p = 2 * pi * r;
+    int p = 2 * M_PI * r;
     return p;
 }
 
