@@ -1,7 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <libgeometry/Error.h>
 #include <libgeometry/SP.h>
@@ -104,7 +104,7 @@ int main()
     else
         printf("Фигуры не пересекаются\n");
     for(size_t i=0; i<n; i++){
-    free(figur[i]);
+    	free(figur[i]);
     }
     fclose(file);
     return 0;

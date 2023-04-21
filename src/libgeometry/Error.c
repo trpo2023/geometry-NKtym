@@ -86,25 +86,24 @@ int center_radius_check(char* str)
             cnt++;
         else if (str[i] == '.')
             cnt--;
-        if (cnt > 3){
+        if (cnt > 3) {
             flag = 1;
-	    return flag;
-	}
+            return flag;
+        }
         if (str[i] == ',') {
             if (cnt != 2) {
                 flag = 1;
                 return flag;
-            } 
-	    else{
+            } else {
                 cnt = 0;
-	    }
+            }
         }
         if (str[i + 1] == ')') {
             if (cnt != 1) {
                 flag = 1;
                 return flag;
             }
-	}
+        }
     }
     return 0;
 }
@@ -122,7 +121,8 @@ int correct_dot_check(char* str)
     int cnt = 0;
     for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] >= ZEROASCII && str[i] <= NINEASCII) {
-            for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ','; j++) {
+            for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ',';
+                 j++) {
                 if (str[j] == '.')
                     cnt++;
             }
