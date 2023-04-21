@@ -1,8 +1,11 @@
-#include <libgeometry/SP.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define pi 3.14
+#include <math.h>
+
+#include <libgeometry/SP.h>
+
+#define _USE_MATH_DEFINES
 
 double coordinatesx(char* str)
 {
@@ -33,13 +36,13 @@ double radius(char* str)
 
 int area(double r)
 {
-    int s = pi * r * r;
+    int s = M_PI * r * r;
     return s;
 }
 
 int perimeter(double r)
 {
-    int p = 2 * pi * r;
+    int p = 2 * M_PI * r;
     return p;
 }
 
@@ -47,8 +50,8 @@ int intersection(circle** figur, long unsigned int n)
 {
     int flag = 0;
     double distancex, distancey, sumradius;
-    for (long unsigned int i = 0; i < n - 1; i++) {
-        for (long unsigned int j = i; j < n; j++) {
+    for (size_t i = 0; i < n - 1; i++) {
+        for (size_t j = i; j < n; j++) {
             distancex = (figur[i]->x) - (figur[j]->x);
             distancey = (figur[i]->y) - (figur[j]->y);
             sumradius = (figur[i]->r) + (figur[j]->r);

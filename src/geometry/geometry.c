@@ -1,8 +1,10 @@
 #include <ctype.h>
-#include <libgeometry/Error.h>
-#include <libgeometry/SP.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+#include <libgeometry/Error.h>
+#include <libgeometry/SP.h>
 
 int main()
 {
@@ -15,21 +17,21 @@ int main()
     char str[40];
     int cnt = 1;
     fgets(str, 40, file);
-    if (figure(str)) {
+    if (circle_check(str)) {
         printf("Неправильное название фигуры в %d строке %s\n", cnt, str);
-        if (first(str))
+        if (open_bracket_check(str))
             printf("Конкретная ошибка:Ошибка открывающей скобки\n");
-    } else if (arg(str))
+    } else if (arguments_check(str))
         printf("Неправильно введены координаты в %d строке %s\n", cnt, str);
-    else if (num(str))
+    else if (center_radius_check(str))
         printf("Неправильная передача аргументов в %d строке %s\n", cnt, str);
-    else if (flout(str))
+    else if (correct_dot_check(str))
         printf("Неправильная запись дробного аргумента в %d строке %s\n",
                cnt,
                str);
-    else if (sumbol(str))
+    else if (comma_check(str))
         printf("Неправильная постановка запятой в %d строке %s\n", cnt, str);
-    else if (end(str))
+    else if (close_bracket_check(str))
         printf("Ошибка завершающей скобки в %d строке %s\n", cnt, str);
     else {
         printf("%s", str);
@@ -46,33 +48,33 @@ int main()
         printf("Area:%d\nPerimeter:%d\n", s, p);
         figur[0] = circles;
     }
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '\n' && fgets(str, 40, file) != NULL) {
             cnt++;
-            if (figure(str)) {
+            if (circle_check(str)) {
                 printf("Неправильное название фигуры во %d строке %s\n",
                        cnt,
                        str);
-                if (first(str))
+                if (open_bracket_check(str))
                     printf("Конкретная ошибка:Ошибка открывающей скобки\n");
-            } else if (arg(str))
+            } else if (arguments_check(str))
                 printf("Неправильно введены координаты во %d строке %s\n",
                        cnt,
                        str);
-            else if (num(str))
+            else if (center_radius_check(str))
                 printf("Неправильная передача аргументов во %d строке %s\n",
                        cnt,
                        str);
-            else if (flout(str))
+            else if (correct_dot_check(str))
                 printf("Неправильная запись дробного аргумента во %d строке "
                        "%s\n",
                        cnt,
                        str);
-            else if (sumbol(str))
+            else if (comma_check(str))
                 printf("Неправильная постановка запятой во %d строке %s\n",
                        cnt,
                        str);
-            else if (end(str))
+            else if (close_bracket_check(str))
                 printf("Ошибка завершающей скобки во %d строке %s\n", cnt, str);
             else {
                 printf("\n%s", str);
@@ -92,15 +94,18 @@ int main()
             i = 0;
         }
     }
-    long unsigned int n = sizeof(figur) / sizeof(figur[0]);
+    size_t n = sizeof(figur) / sizeof(figur[0]);
     printf("\nTest\n");
-    for (long unsigned int i = 0; i < n; i++) {
+    for (size_t i = 0; i < n; i++) {
         printf("%.1lf %.1lf %.1lf \n", figur[i]->x, figur[i]->y, figur[i]->r);
     }
     if (intersection(figur, n))
         printf("Фигуры пересекаются\n");
     else
         printf("Фигуры не пересекаются\n");
+    for(size_t i=0; i<n; i++){
+    free(figur[i]);
+    }
     fclose(file);
     return 0;
 }

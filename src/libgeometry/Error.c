@@ -1,19 +1,19 @@
 #include <ctype.h>
-#include <libgeometry/Error.h>
 #include <stdio.h>
 #include <string.h>
+
+#include <libgeometry/Error.h>
 
 #define ZEROASCII 48
 #define NINEASCII 57
 
-int figure(char* str)
+int circle_check(char* str)
 {
     int flag = 1;
     char data[40];
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] != '(') {
             data[i] = tolower(str[i]);
-            str[i] = data[i];
         } else
             break;
     }
@@ -24,10 +24,10 @@ int figure(char* str)
     return flag;
 }
 
-int first(char* str)
+int open_bracket_check(char* str)
 {
     int flag = 1;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] != '(')
             continue;
         else {
@@ -38,17 +38,17 @@ int first(char* str)
     return flag;
 }
 
-int arg(char* str)
+int arguments_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if ((str[i] >= ZEROASCII && str[i] <= NINEASCII) || str[i] == '.'
             || str[i] == ',' || str[i] == ' ')
             flag = 0;
@@ -57,7 +57,7 @@ int arg(char* str)
             break;
         }
     }
-    for (long unsigned int i = data + 1; i < strlen(str) - 1; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 1; i++) {
         if (str[i] == '.'
             && ((str[i + 1] < ZEROASCII || str[i + 1] > NINEASCII)
                 || (str[i - 1] < ZEROASCII || str[i - 1] > NINEASCII)))
@@ -70,58 +70,59 @@ int arg(char* str)
     return flag;
 }
 
-int num(char* str)
+int center_radius_check(char* str)
 {
-    int flag = 1;
+    int flag = 0;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
     int cnt = 0;
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] >= ZEROASCII && str[i] <= NINEASCII)
             cnt++;
         else if (str[i] == '.')
             cnt--;
-        if (cnt > 3)
+        if (cnt > 3){
             flag = 1;
-        else
-            flag = 0;
+	    return flag;
+	}
         if (str[i] == ',') {
             if (cnt != 2) {
                 flag = 1;
-                break;
-            } else
+                return flag;
+            } 
+	    else{
                 cnt = 0;
+	    }
         }
         if (str[i + 1] == ')') {
             if (cnt != 1) {
                 flag = 1;
-                break;
+                return flag;
             }
-        }
+	}
     }
-    return flag;
+    return 0;
 }
 
-int flout(char* str)
+int correct_dot_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
     int cnt = 0;
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] >= ZEROASCII && str[i] <= NINEASCII) {
-            for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ',';
-                 j++) {
+            for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ','; j++) {
                 if (str[j] == '.')
                     cnt++;
             }
@@ -135,17 +136,17 @@ int flout(char* str)
     return flag;
 }
 
-int sumbol(char* str)
+int comma_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] == ',') {
             flag = 0;
         } else {
@@ -155,12 +156,12 @@ int sumbol(char* str)
     return flag;
 }
 
-int end(char* str)
+int close_bracket_check(char* str)
 {
     int flag = 1;
     int bracket = 0;
     long int ending = strlen(str) - 2;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == ')') {
             bracket = i;
             break;
