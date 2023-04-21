@@ -48,7 +48,7 @@ int main()
         printf("Area:%d\nPerimeter:%d\n", s, p);
         figur[0] = circles;
     }
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '\n' && fgets(str, 40, file) != NULL) {
             cnt++;
             if (circle_check(str)) {
@@ -94,9 +94,9 @@ int main()
             i = 0;
         }
     }
-    long unsigned int n = sizeof(figur) / sizeof(figur[0]);
+    size_t n = sizeof(figur) / sizeof(figur[0]);
     printf("\nTest\n");
-    for (long unsigned int i = 0; i < n; i++) {
+    for (size_t i = 0; i < n; i++) {
         printf("%.1lf %.1lf %.1lf \n", figur[i]->x, figur[i]->y, figur[i]->r);
     }
     if (intersection(figur, n))

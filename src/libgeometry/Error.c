@@ -11,7 +11,7 @@ int circle_check(char* str)
 {
     int flag = 1;
     char data[40];
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] != '(') {
             data[i] = tolower(str[i]);
         } else
@@ -27,7 +27,7 @@ int circle_check(char* str)
 int open_bracket_check(char* str)
 {
     int flag = 1;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] != '(')
             continue;
         else {
@@ -42,13 +42,13 @@ int arguments_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if ((str[i] >= ZEROASCII && str[i] <= NINEASCII) || str[i] == '.'
             || str[i] == ',' || str[i] == ' ')
             flag = 0;
@@ -57,7 +57,7 @@ int arguments_check(char* str)
             break;
         }
     }
-    for (long unsigned int i = data + 1; i < strlen(str) - 1; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 1; i++) {
         if (str[i] == '.'
             && ((str[i + 1] < ZEROASCII || str[i + 1] > NINEASCII)
                 || (str[i - 1] < ZEROASCII || str[i - 1] > NINEASCII)))
@@ -74,14 +74,14 @@ int center_radius_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
     int cnt = 0;
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] >= ZEROASCII && str[i] <= NINEASCII)
             cnt++;
         else if (str[i] == '.')
@@ -111,14 +111,14 @@ int correct_number_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
     int cnt = 0;
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] >= ZEROASCII && str[i] <= NINEASCII) {
             for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ','; j++) {
                 if (str[j] == '.')
@@ -138,13 +138,13 @@ int comma_check(char* str)
 {
     int flag = 1;
     int data = 0;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             data = i;
             break;
         }
     }
-    for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
+    for (size_t i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] == ',') {
             flag = 0;
         } else {
@@ -159,7 +159,7 @@ int close_bracket_check(char* str)
     int flag = 1;
     int bracket = 0;
     long int ending = strlen(str) - 2;
-    for (long unsigned int i = 0; i < strlen(str); i++) {
+    for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == ')') {
             bracket = i;
             break;

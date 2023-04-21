@@ -50,8 +50,8 @@ int intersection(circle** figur, long unsigned int n)
 {
     int flag = 0;
     double distancex, distancey, sumradius;
-    for (long unsigned int i = 0; i < n - 1; i++) {
-        for (long unsigned int j = i; j < n; j++) {
+    for (size_t i = 0; i < n - 1; i++) {
+        for (size_t j = i; j < n; j++) {
             distancex = (figur[i]->x) - (figur[j]->x);
             distancey = (figur[i]->y) - (figur[j]->y);
             sumradius = (figur[i]->r) + (figur[j]->r);
