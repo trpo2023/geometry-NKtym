@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: Fedora Linux 36
+    runs-on: Fedora 36
 
     steps:
       - uses: actions/checkout@v2
