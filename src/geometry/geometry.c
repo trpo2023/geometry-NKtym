@@ -103,8 +103,8 @@ int main()
         printf("Фигуры пересекаются\n");
     else
         printf("Фигуры не пересекаются\n");
-    for(size_t i=0; i<n; i++) {
-    	free(figur[i]);
+    for (size_t i = 0; i < n; i++) {
+        free(figur[i]);
     }
     fclose(file);
     return 0;
