@@ -39,7 +39,7 @@ CTEST(TEST_arguments_check, simple_normalarg)
 
 CTEST(TEST_center_radius_check, simple_normalfloutnum)
 {
-    char* bad = "CirCle(0 0.6, 10.0.1.)";
+    char* bad = "CirCle(0 0 6, 10.0 1)";
     char* good = "CirCle(0 0, 10)";
     int resultgood = center_radius_check(good);
     int resultbad = center_radius_check(bad);
@@ -47,12 +47,12 @@ CTEST(TEST_center_radius_check, simple_normalfloutnum)
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_correct_number_check, simple_cntnum)
+CTEST(TEST_correct_dot_check, simple_cntnum)
 {
-    char* bad = "CirCle(0 0 1, 10 5 )";
+    char* bad = "CirCle(0.3 0.5, 10.0.)";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = correct_number_check(good);
-    int resultbad = correct_number_check(bad);
+    int resultgood = correct_dot_check(good);
+    int resultbad = correct_dot_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }

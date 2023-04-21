@@ -25,7 +25,7 @@ int main()
         printf("Неправильно введены координаты в %d строке %s\n", cnt, str);
     else if (center_radius_check(str))
         printf("Неправильная передача аргументов в %d строке %s\n", cnt, str);
-    else if (correct_number_check(str))
+    else if (correct_dot_check(str))
         printf("Неправильная запись дробного аргумента в %d строке %s\n",
                cnt,
                str);
@@ -65,7 +65,7 @@ int main()
                 printf("Неправильная передача аргументов во %d строке %s\n",
                        cnt,
                        str);
-            else if (correct_number_check(str))
+            else if (correct_dot_check(str))
                 printf("Неправильная запись дробного аргумента во %d строке "
                        "%s\n",
                        cnt,

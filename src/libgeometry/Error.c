@@ -72,7 +72,7 @@ int arguments_check(char* str)
 
 int center_radius_check(char* str)
 {
-    int flag = 1;
+    int flag = 0;
     int data = 0;
     for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
@@ -86,28 +86,30 @@ int center_radius_check(char* str)
             cnt++;
         else if (str[i] == '.')
             cnt--;
-        if (cnt > 3)
+        if (cnt > 3){
             flag = 1;
-        else
-            flag = 0;
+	    return flag;
+	}
         if (str[i] == ',') {
             if (cnt != 2) {
                 flag = 1;
-                break;
-            } else
+                return flag;
+            } 
+	    else{
                 cnt = 0;
+	    }
         }
         if (str[i + 1] == ')') {
             if (cnt != 1) {
                 flag = 1;
-                break;
+                return flag;
             }
-        }
+	}
     }
-    return flag;
+    return 0;
 }
 
-int correct_number_check(char* str)
+int correct_dot_check(char* str)
 {
     int flag = 1;
     int data = 0;
