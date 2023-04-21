@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #include <libgeometry/SP.h>
 
 #define _USE_MATH_DEFINES
