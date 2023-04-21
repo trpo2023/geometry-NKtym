@@ -7,62 +7,62 @@
 
 #include <ctest.h>
 
-CTEST(TEST_figure, simple_circle)
+CTEST(TEST_circle_check, simple_circle)
 {
     char* bad = "cirgle(0 0, 10)";
     char* good = "circle(0 0, 10)";
-    int resultgood = figure(good);
-    int resultbad = figure(bad);
+    int resultgood = circle_check(good);
+    int resultbad = circle_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_first, simple_firstelement)
+CTEST(TEST_open_bracket_check, simple_firstelement)
 {
     char* bad = "CirCle 0 0, 10 1";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = first(good);
-    int resultbad = first(bad);
+    int resultgood = open_bracket_check(good);
+    int resultbad = open_bracket_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_arg, simple_normalarg)
+CTEST(TEST_arguments_check, simple_normalarg)
 {
     char* bad = "CirCle(g 0, 10)";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = arg(good);
-    int resultbad = arg(bad);
+    int resultgood = arguments_check(good);
+    int resultbad = arguments_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_flout, simple_normalfloutnum)
+CTEST(TEST_center_radius_check, simple_normalfloutnum)
 {
-    char* bad = "CirCle(0 0, 10.0.1)";
+    char* bad = "CirCle(0 0.6, 10.0.1.)";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = flout(good);
-    int resultbad = flout(bad);
+    int resultgood = center_radius_check(good);
+    int resultbad = center_radius_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_num, simple_cntnum)
+CTEST(TEST_correct_number_check, simple_cntnum)
 {
-    char* bad = "CirCle(0 0 1, 10 )";
+    char* bad = "CirCle(0 0 1, 10 5 )";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = num(good);
-    int resultbad = num(bad);
+    int resultgood = correct_number_check(good);
+    int resultbad = correct_number_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }
 
-CTEST(TEST_sumbol, simple_delimiter)
+CTEST(TEST_comma_check, simple_delimiter)
 {
     char* bad = "CirCle(0 0 10)";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = sumbol(good);
-    int resultbad = sumbol(bad);
+    int resultgood = comma_check(good);
+    int resultbad = comma_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }
@@ -71,8 +71,8 @@ CTEST(TEST_end, simple_endelement)
 {
     char* bad = "CirCle(0 0, 10 1";
     char* good = "CirCle(0 0, 10)";
-    int resultgood = end(good);
-    int resultbad = end(bad);
+    int resultgood = close_bracket_check(good);
+    int resultbad = close_bracket_check(bad);
     ASSERT_EQUAL(1, resultbad);
     ASSERT_EQUAL(0, resultgood);
 }

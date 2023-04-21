@@ -7,7 +7,7 @@
 #define ZEROASCII 48
 #define NINEASCII 57
 
-int figure(char* str)
+int circle_check(char* str)
 {
     int flag = 1;
     char data[40];
@@ -24,7 +24,7 @@ int figure(char* str)
     return flag;
 }
 
-int first(char* str)
+int open_bracket_check(char* str)
 {
     int flag = 1;
     for (long unsigned int i = 0; i < strlen(str); i++) {
@@ -38,7 +38,7 @@ int first(char* str)
     return flag;
 }
 
-int arg(char* str)
+int arguments_check(char* str)
 {
     int flag = 1;
     int data = 0;
@@ -70,7 +70,7 @@ int arg(char* str)
     return flag;
 }
 
-int num(char* str)
+int center_radius_check(char* str)
 {
     int flag = 1;
     int data = 0;
@@ -107,7 +107,7 @@ int num(char* str)
     return flag;
 }
 
-int flout(char* str)
+int correct_number_check(char* str)
 {
     int flag = 1;
     int data = 0;
@@ -120,8 +120,7 @@ int flout(char* str)
     int cnt = 0;
     for (long unsigned int i = data + 1; i < strlen(str) - 2; i++) {
         if (str[i] >= ZEROASCII && str[i] <= NINEASCII) {
-            for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ',';
-                 j++) {
+            for (int j = i; str[j] != ' ' && str[j] != ')' && str[j] != ','; j++) {
                 if (str[j] == '.')
                     cnt++;
             }
@@ -135,7 +134,7 @@ int flout(char* str)
     return flag;
 }
 
-int sumbol(char* str)
+int comma_check(char* str)
 {
     int flag = 1;
     int data = 0;
@@ -155,7 +154,7 @@ int sumbol(char* str)
     return flag;
 }
 
-int end(char* str)
+int close_bracket_check(char* str)
 {
     int flag = 1;
     int bracket = 0;

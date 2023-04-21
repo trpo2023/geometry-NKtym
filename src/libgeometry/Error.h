@@ -1,10 +1,9 @@
 #pragma once
 
-int fileerror(FILE* file);
-int figure(char* str);
-int first(char* str);
-int arg(char* str);
-int num(char* str);
-int flout(char* str);
-int sumbol(char* str);
-int end(char* str);
+int circle_check(char* str);
+int open_bracket_check(char* str);
+int arguments_check(char* str);
+int center_radius_check(char* str);
+int correct_number_check(char* str);
+int comma_check(char* str);
+int close_bracket_check(char* str);
