@@ -59,7 +59,7 @@ CTEST(TEST_intersection, simple_correspondenceintersection)
     int resultgood = intersection(figur, 2);
     figur[2] = circle3;
     int resultbad = intersection(figur, 3);
-    for (size_t i = 0; i < n; i++) {
+    for (size_t i = 0; i < 3; i++) {
         free(figur[i]);
     }
     ASSERT_EQUAL(1, resultgood);
